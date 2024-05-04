@@ -11,7 +11,8 @@
             <div> {{oportunidades.length > 0 ? 'OPORTUNIDADES' : 'AMENAZAS'}}</div>
 
             <ng-container *ngIf="oportunidades.length > 0">
-                <div class="mt-4" *ngFor="let oportunidad of oportunidades; let index = index">
+                <div class="mt-4" *ngFor="let oportunidad of oportunidades; let index = index"
+                    [ngClass]="{'text-blue': resaltarIndicesOportunidades.includes(index + 1)}">
                     <div>
                         {{index + 1}}.
                         {{ oportunidad }}
@@ -20,7 +21,8 @@
             </ng-container>
 
             <ng-container *ngIf="amenazas.length > 0">
-                <div class="mt-4" *ngFor="let amenaza of amenazas ; let index = index">
+                <div class="mt-4" *ngFor="let amenaza of amenazas ; let index = index"
+                    [ngClass]="{'text-red': resaltarIndicesAmenazas.includes(index + 1)}">
                     <div>
                         {{index + 1}}.
                         {{ amenaza }}
@@ -33,7 +35,8 @@
             <div> {{fortalezas.length > 0 ? 'FORTALEZAS' : 'DEBILIDADES'}}</div>
 
             <ng-container *ngIf="fortalezas.length > 0">
-                <div class="mt-4" *ngFor="let fortaleza of fortalezas ; let index = index">
+                <div class="mt-4" *ngFor="let fortaleza of fortalezas ; let index = index"
+                    [ngClass]="{'text-green': resaltarIndicesFortalezas.includes(index + 1)}">
                     <div>
                         {{index + 1}}.
                         {{ fortaleza }}
@@ -42,7 +45,8 @@
             </ng-container>
 
             <ng-container *ngIf="debilidades.length > 0">
-                <div class="mt-4" *ngFor="let debilidad of debilidades ; let index = index">
+                <div class="mt-4" *ngFor="let debilidad of debilidades ; let index = index"
+                    [ngClass]="{'text-purple': resaltarIndicesDebilidades.includes(index + 1)}">
                     <div>
                         {{index + 1}}.
                         {{ debilidad }}
@@ -52,11 +56,13 @@
         </div>
         <div class="p-4">
             <div class="mt-4" *ngFor="let estrategia of estrategias ; let index = index">
-                <div>
+                <div class="cursor-pointer" (click)="pintaEstrategia(estrategia)">
                     <strong>
-                        {{index + 1}}.
-                        {{ estrategia }}
+                        {{index + 1}}
+                        {{estrategia.codigo}}
                     </strong>
+                    {{ estrategia.descripcion }}
+
                 </div>
             </div>
         </div>

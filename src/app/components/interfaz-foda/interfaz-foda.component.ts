@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { TableFodaComponent } from '../table-foda/table-foda.component';
 
 @Component({
   selector: 'app-interfaz-foda',
@@ -6,6 +7,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
   styleUrls: ['./interfaz-foda.component.scss'],
 })
 export class InterfazFodaComponent {
+  @ViewChild(TableFodaComponent) childComponent!: TableFodaComponent;
   title: string = 'Análisis FODA';
   oportunidades: string[] = [];
   fortalezas: string[] = [];
@@ -42,11 +44,12 @@ export class InterfazFodaComponent {
     'Cambios en las regulaciones gubernamentales relacionadas con la privacidad de los datos que podrían generar un impacto significativo en las operaciones de la empresa y en su capacidad para innovar y expandirse.',
   ];
 
-  estrategias: string[] = [];
+  estrategias: any[] = [];
 
   constructor(private cdr: ChangeDetectorRef) {}
 
   getEstrategiasOfensivas() {
+    this.childComponent.formatearIndices();
     this.title =
       'CUADRANTE DE FORTALEZAS VS OPORTUNIDADES “ESTRATEGIAS OFENSIVAS”.';
     this.oportunidades = this.oportunidadesData;
@@ -54,26 +57,66 @@ export class InterfazFodaComponent {
     this.debilidades = [];
     this.amenazas = [];
     this.estrategias = [
-      'E01: Lanzar servicios de computación en la nube centrados en la IA (F02, O1, O2)',
-      'E02: Expandir el mercado internacional enfocándose en el mundo gaming (F01, O3, O4)',
-      'E03: Implementar soluciones de inteligencia artificial para industrias especificas (F03, F05, O2, O3)',
+      {
+        codigo: 'E01',
+        descripcion:
+          'Lanzar servicios de computación en la nube centrados en la IA (F02, O1, O2)',
+        fortalezas: [2],
+        oportunidades: [1, 2],
+      },
+      {
+        codigo: 'E02',
+        descripcion:
+          'Expandir el mercado internacional enfocándose en el mundo gaming (F01, O3, O4)',
+        fortalezas: [1],
+        oportunidades: [3, 4],
+      },
+      {
+        codigo: 'E03',
+        descripcion:
+          'Implementar soluciones de inteligencia artificial para industrias especificas (F03, F05, O2, O3)',
+        fortalezas: [3, 5],
+        oportunidades: [2, 3],
+      },
     ];
   }
 
   getEstrategiasDefensivas() {
+    this.childComponent.formatearIndices();
+
     this.title = 'CUADRANTE DE FORTALEZAS VS AMENAZAS “ESTRATÉGIAS DEFENSIVAS”';
     this.amenazas = this.amenazasData;
     this.fortalezas = this.fortalezasData;
     this.debilidades = [];
     this.oportunidades = [];
+
     this.estrategias = [
-      'E04: Reforzar la seguridad cibernética y gestionar riesgos (F03, F05, A02)',
-      'E05: Diversificar mercados y productos (F02, F05, A03, A04)',
-      'E06: Colaborar con reguladores gubernamentales (F04, F05, A05)',
+      {
+        codigo: 'E04',
+        descripcion:
+          'Reforzar la seguridad cibernética y gestionar riesgos (F03, F05, A02)',
+        fortalezas: [3, 5],
+        amenazas: [2],
+      },
+      {
+        codigo: 'E05',
+        descripcion: 'Diversificar mercados y productos (F02, F05, A03, A04)',
+        fortalezas: [2, 5],
+        amenazas: [3, 4],
+      },
+      {
+        codigo: 'E06',
+        descripcion:
+          'Colaborar con reguladores gubernamentales (F04, F05, A05)',
+        fortalezas: [4, 5],
+        amenazas: [5],
+      },
     ];
   }
 
   getEstrategiasAdaptativas() {
+    this.childComponent.formatearIndices();
+
     this.title =
       'CUADRANTE DE DEBILIDADES VS OPORTUNIDADES “ESTRATÉGIAS ADAPTATIVAS”';
     this.oportunidades = this.oportunidadesData;
@@ -82,12 +125,26 @@ export class InterfazFodaComponent {
     this.amenazas = [];
 
     this.estrategias = [
-      'E07: Diversificar productos y servicios en la nube (D01, D02, O1)',
-      'E08: Incorporar IA en productos y servicios existentes (D03, 02)',
+      {
+        codigo: 'E07',
+        descripcion:
+          'Diversificar productos y servicios en la nube (D01, D02, O1)',
+        debilidades: [1, 2],
+        oportunidades: [1],
+      },
+      {
+        codigo: 'E08',
+        descripcion:
+          'Incorporar IA en productos y servicios existentes (D03, O2)',
+        debilidades: [3],
+        oportunidades: [2],
+      },
     ];
   }
 
   getEstrategiasSupervivencia() {
+    this.childComponent.formatearIndices();
+
     this.title =
       'CUADRANTE DE DEBILIDADES VS AMENAZAS “ESTRATEGIAS DE SUPERVIVENCIA”';
     this.debilidades = this.debilidadesData;
@@ -96,8 +153,20 @@ export class InterfazFodaComponent {
     this.fortalezas = [];
 
     this.estrategias = [
-      'E09: Diversificar alianzas estratégicas para fortalecer la posición competitiva (D01, D02, D03, A01, A04)',
-      'E10: Invertir en seguridad cibernética y cumplimiento normativo (D04, A02, A05)',
+      {
+        codigo: 'E09',
+        descripcion:
+          'Diversificar alianzas estratégicas para fortalecer la posición competitiva (D01, D02, D03, A01, A04)',
+        debilidades: [1, 2, 3],
+        amenazas: [1, 4],
+      },
+      {
+        codigo: 'E10',
+        descripcion:
+          'Invertir en seguridad cibernética y cumplimiento normativo (D04, A02, A05)',
+        debilidades: [4],
+        amenazas: [2, 5],
+      },
     ];
   }
 }
