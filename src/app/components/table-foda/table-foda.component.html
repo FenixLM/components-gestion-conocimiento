@@ -3,7 +3,9 @@
     <h1>{{title}}</h1>
 
     <div class="grid md:grid-cols-2 border border-solid my-8">
-        <div class="flex flex-col justify-between bg-[#5b9bd5] p-4">
+
+        <div
+            class="flex flex-col justify-between bg-[#5b9bd5] border-solid border-b p-4 shadow-md transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
             <div>Analisis externo</div>
             <div>Analisis interno</div>
         </div>
@@ -66,7 +68,8 @@
             class="border-solid border-b p-4 shadow-md transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
 
             <div class="mt-4" *ngFor="let estrategia of estrategias ; let index = index">
-                <div class="cursor-pointer" (click)="pintaEstrategia(estrategia)">
+                <div class="cursor-pointer" (click)="pintaEstrategia(estrategia)"
+                    [class.seleccionado]="estrategia === estrategiaSeleccionada">
                     <strong>
                         {{index + 1}}
                         {{estrategia.codigo}}

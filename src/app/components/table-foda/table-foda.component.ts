@@ -20,6 +20,8 @@ export class TableFodaComponent implements OnInit {
   resaltarIndicesDebilidades: number[] = [];
   resaltarIndicesAmenazas: number[] = [];
 
+  estrategiaSeleccionada: any | null = null;
+
   constructor() {}
   ngOnInit() {
     this.formatearIndices();
@@ -35,6 +37,8 @@ export class TableFodaComponent implements OnInit {
   }
 
   pintaEstrategia(estrategia: any) {
+    this.estrategiaSeleccionada = estrategia;
+
     estrategia.fortalezas &&
       (this.resaltarIndicesFortalezas = estrategia.fortalezas);
     estrategia.oportunidades &&
