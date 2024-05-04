@@ -7,7 +7,9 @@
             <div>Analisis externo</div>
             <div>Analisis interno</div>
         </div>
-        <div class="border-solid border-b p-4">
+        <div
+            class="border-solid border-b p-4 shadow-md transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
+
             <div>
                 <strong> {{oportunidades.length > 0 ? 'OPORTUNIDADES' : 'AMENAZAS'}}</strong>
             </div>
@@ -33,7 +35,9 @@
             </ng-container>
 
         </div>
-        <div class="border-solid border-b border-r p-4">
+        <div
+            class="border-solid border-b p-4 shadow-md transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
+
             <div>
                 <strong>{{fortalezas.length > 0 ? 'FORTALEZAS' : 'DEBILIDADES'}} </strong>
             </div>
@@ -58,7 +62,9 @@
                 </div>
             </ng-container>
         </div>
-        <div class="p-4">
+        <div
+            class="border-solid border-b p-4 shadow-md transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
+
             <div class="mt-4" *ngFor="let estrategia of estrategias ; let index = index">
                 <div class="cursor-pointer" (click)="pintaEstrategia(estrategia)">
                     <strong>
