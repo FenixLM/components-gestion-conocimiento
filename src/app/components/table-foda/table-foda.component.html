@@ -1,14 +1,16 @@
-<section class="w-[800px] m-auto py-24">
+<section class="md:w-[800px] m-auto py-24">
 
     <h1>{{title}}</h1>
 
-    <div class="grid grid-cols-2 border border-solid my-8">
+    <div class="grid md:grid-cols-2 border border-solid my-8">
         <div class="flex flex-col justify-between bg-[#5b9bd5] p-4">
             <div>Analisis externo</div>
             <div>Analisis interno</div>
         </div>
         <div class="border-solid border-b p-4">
-            <div> {{oportunidades.length > 0 ? 'OPORTUNIDADES' : 'AMENAZAS'}}</div>
+            <div>
+                <strong> {{oportunidades.length > 0 ? 'OPORTUNIDADES' : 'AMENAZAS'}}</strong>
+            </div>
 
             <ng-container *ngIf="oportunidades.length > 0">
                 <div class="mt-4" *ngFor="let oportunidad of oportunidades; let index = index"
@@ -31,8 +33,10 @@
             </ng-container>
 
         </div>
-        <div class="border-solid border-r p-4">
-            <div> {{fortalezas.length > 0 ? 'FORTALEZAS' : 'DEBILIDADES'}}</div>
+        <div class="border-solid border-b border-r p-4">
+            <div>
+                <strong>{{fortalezas.length > 0 ? 'FORTALEZAS' : 'DEBILIDADES'}} </strong>
+            </div>
 
             <ng-container *ngIf="fortalezas.length > 0">
                 <div class="mt-4" *ngFor="let fortaleza of fortalezas ; let index = index"
