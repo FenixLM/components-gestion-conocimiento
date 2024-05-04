@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "formulario-prueba-139dd": {
+      "hosting": {
+        "formulario": [
+          "formulario-prueba-139dd"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "formulario-prueba-139dd"
+  }
+}

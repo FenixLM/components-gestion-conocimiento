@@ -1,0 +1,64 @@
+<section class="w-[800px] m-auto py-24">
+
+    <h1>{{title}}</h1>
+
+    <div class="grid grid-cols-2 border border-solid my-8">
+        <div class="flex flex-col justify-between bg-[#5b9bd5] p-4">
+            <div>Analisis externo</div>
+            <div>Analisis interno</div>
+        </div>
+        <div class="border-solid border-b p-4">
+            <div> {{oportunidades.length > 0 ? 'OPORTUNIDADES' : 'AMENAZAS'}}</div>
+
+            <ng-container *ngIf="oportunidades.length > 0">
+                <div class="mt-4" *ngFor="let oportunidad of oportunidades; let index = index">
+                    <div>
+                        {{index + 1}}.
+                        {{ oportunidad }}
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="amenazas.length > 0">
+                <div class="mt-4" *ngFor="let amenaza of amenazas ; let index = index">
+                    <div>
+                        {{index + 1}}.
+                        {{ amenaza }}
+                    </div>
+                </div>
+            </ng-container>
+
+        </div>
+        <div class="border-solid border-r p-4">
+            <div> {{fortalezas.length > 0 ? 'FORTALEZAS' : 'DEBILIDADES'}}</div>
+
+            <ng-container *ngIf="fortalezas.length > 0">
+                <div class="mt-4" *ngFor="let fortaleza of fortalezas ; let index = index">
+                    <div>
+                        {{index + 1}}.
+                        {{ fortaleza }}
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="debilidades.length > 0">
+                <div class="mt-4" *ngFor="let debilidad of debilidades ; let index = index">
+                    <div>
+                        {{index + 1}}.
+                        {{ debilidad }}
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="p-4">
+            <div class="mt-4" *ngFor="let estrategia of estrategias ; let index = index">
+                <div>
+                    <strong>
+                        {{index + 1}}.
+                        {{ estrategia }}
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

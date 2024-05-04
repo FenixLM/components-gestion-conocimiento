@@ -1,0 +1,75 @@
+<!-- <div class="container">
+    <div> </div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div> -->
+
+<button mat-raised-button color="primary" (click)="regresar()">
+    <mat-icon>arrow_back</mat-icon>
+    Regresar
+</button>
+
+<div id="mapa-empatia">
+    <div class="encabezado">
+        <h1>Mapa de Empatía - "Nombre de la Organización"</h1>
+    </div>
+
+    <div class="seccion seccion-nombre">
+        <h2 class="seccion-titulo">Nombre: Edad:</h2>
+        <div class="seccion-contenido">
+            <input type="text" id="nombre" placeholder="Nombre" [value]="dataFormulario?.nombre"> <input type="number"
+                id="edad" placeholder="Edad" [value]="dataFormulario?.edad">
+        </div>
+    </div>
+
+    <div class="seccion seccion-pensar">
+        <h2 class="seccion-titulo">¿Qué piensa y siente?</h2>
+        <div class="seccion-contenido">
+            <textarea id="pensar">{{dataFormulario?.piensaSiente}}</textarea>
+        </div>
+    </div>
+
+    <div class="seccion seccion-escuchar">
+        <h2 class="seccion-titulo">¿Qué escucha?</h2>
+        <div class="seccion-contenido">
+            <textarea id="escuchar">
+                {{dataFormulario?.escucha}}
+            </textarea>
+        </div>
+    </div>
+
+    <div class="seccion seccion-ver">
+        <h2 class="seccion-titulo">¿Qué se ve?</h2>
+        <div class="seccion-contenido">
+            <textarea id="ver">
+                {{dataFormulario?.ve}}
+            </textarea>
+        </div>
+    </div>
+
+    <div class="seccion seccion-hablar">
+        <h2 class="seccion-titulo">¿Qué habla y hace?</h2>
+        <div class="seccion-contenido">
+            <textarea id="hablar"></textarea>
+        </div>
+    </div>
+
+    <div class="seccion seccion-esfuerzos">
+        <h2 class="seccion-titulo">Esfuerzos</h2>
+        <div class="seccion-contenido">
+            <textarea id="esfuerzos">
+                {{dataFormulario?.esfuerzos}}
+            </textarea>
+        </div>
+    </div>
+
+    <div class="seccion seccion-resultados">
+        <h2 class="seccion-titulo">Resultados</h2>
+        <div class="seccion-contenido">
+            <textarea id="resultados">
+                {{dataFormulario?.resultados}}
+            </textarea>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div>
+
+    <h1 class="text-center">
+        CURSO GESTIÓN DEL CONOCIMIENTO
+    </h1>
+    <div class="flex justify-between bg-[#5b9bd5] p-4">
+        <button mat-raised-button color="primary" class="w-[300px] m-auto" (click)="getEstrategiasOfensivas()">
+            <span>ESTRATEGIAS OFENSIVAS</span>
+        </button>
+
+        <button mat-raised-button color="primary" class="w-[300px] m-auto" (click)="getEstrategiasDefensivas()">
+            <span>ESTRATEGIAS DEFENSIVAS</span>
+        </button>
+
+        <button mat-raised-button color="primary" class="w-[300px] m-auto" (click)="getEstrategiasAdaptativas()">
+            <span>ESTRATEGIAS ADAPTATIVAS</span>
+        </button>
+
+        <button mat-raised-button color="primary" class="w-[300px] m-auto" (click)="getEstrategiasSupervivencia()">
+            <span>ESTRATEGIAS DE SUPERVIVENCIA</span>
+        </button>
+    </div>
+
+
+    <app-table-foda [title]="title" [oportunidades]="oportunidades" [fortalezas]="fortalezas"
+        [debilidades]="debilidades" [amenazas]="amenazas" [estrategias]="estrategias"></app-table-foda>
+
+</div>

@@ -1,0 +1,98 @@
+<ng-container>
+    <div class="table__container--nav">
+        <mat-icon>assignment_turned_in</mat-icon>
+        <h3 class="m-2 font-normal">Lista de formularioos</h3>
+    </div>
+
+    <div class="table__container--search">
+        <h1></h1>
+
+        <button mat-raised-button color="primary" (click)="openDialogCreate()">
+            <mat-icon>add</mat-icon>
+            Nuevo formulario
+        </button>
+    </div>
+
+
+    <mat-table [dataSource]="formularioSource" matSort class="table__container--table">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+            <mat-cell *matCellDef="let formulario" data-label="ID">
+                {{ formulario.id }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Nombre
+            </mat-header-cell>
+            <mat-cell *matCellDef="let formulario" data-label="Nombre">
+                {{ formulario.nombre }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="edad">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Edad
+            </mat-header-cell>
+            <mat-cell *matCellDef="let formulario" data-label="Edad">
+                {{ formulario.edad }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="proyecto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> proyecto </mat-header-cell>
+            <mat-cell *matCellDef="let formulario" data-label="proyecto">
+                {{ formulario?.proyecto }}
+            </mat-cell>
+        </ng-container>
+
+
+
+
+        <ng-container matColumnDef="link">
+            <mat-header-cell *matHeaderCellDef> Link </mat-header-cell>
+            <mat-cell *matCellDef="let formulario" data-label="Acciones">
+                <section>
+                    <a [routerLink]="['/formulario-view', formulario.id]" target="_blank">
+                        <button mat-icon-button color="primary" matTooltip="Vista de detalle"
+                            matTooltipPosition="below">
+                            <mat-icon>visibility</mat-icon>
+                        </button>
+                    </a>
+
+                    <!-- <button
+              mat-icon-button
+              color="primary"
+              matTooltip="Vista de detalle"
+              matTooltipPosition="below"
+              (click)="openDialogDetail(formulario)">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              color="accent"
+              matTooltip="Editar formularioo"
+              matTooltipPosition="below"
+              (click)="openDialogEdit(formulario)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              color="warn"
+              matTooltip="Eliminar formularioo"
+              matTooltipPosition="below"
+              (click)="openDialogDelete(formulario)">
+              <mat-icon>delete</mat-icon>
+            </button> -->
+                </section>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <mat-paginator class="col-12" [pageSizeOptions]="[5, 10]" showFirstLastButtons>
+    </mat-paginator>
+</ng-container>
