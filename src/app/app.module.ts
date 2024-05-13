@@ -26,9 +26,18 @@ import { ViewResultComponent } from './components/view-result/view-result.compon
 import { ViewPrincipalComponent } from './components/view-principal/view-principal.component';
 import { TableFodaComponent } from './components/table-foda/table-foda.component';
 import { InterfazFodaComponent } from './components/interfaz-foda/interfaz-foda.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 @NgModule({
-  declarations: [AppComponent, FormularioComponent, AvisoComponent, ViewResultComponent, ViewPrincipalComponent, TableFodaComponent, InterfazFodaComponent],
+  declarations: [
+    AppComponent,
+    FormularioComponent,
+    AvisoComponent,
+    ViewResultComponent,
+    ViewPrincipalComponent,
+    TableFodaComponent,
+    InterfazFodaComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -45,7 +54,17 @@ import { InterfazFodaComponent } from './components/interfaz-foda/interfaz-foda.
     BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    provideFirebaseApp(() => initializeApp({"projectId":"formulario-prueba-139dd","appId":"1:550068546699:web:d8b66d63eb8d9ecbaff88e","storageBucket":"formulario-prueba-139dd.appspot.com","apiKey":"AIzaSyBMWeqt3Bk8M7Pg7Gfm2qE6PKRlpKdTixU","authDomain":"formulario-prueba-139dd.firebaseapp.com","messagingSenderId":"550068546699"})),
+    provideFirebaseApp(() =>
+      initializeApp({
+        projectId: 'formulario-prueba-139dd',
+        appId: '1:550068546699:web:d8b66d63eb8d9ecbaff88e',
+        storageBucket: 'formulario-prueba-139dd.appspot.com',
+        apiKey: 'AIzaSyBMWeqt3Bk8M7Pg7Gfm2qE6PKRlpKdTixU',
+        authDomain: 'formulario-prueba-139dd.firebaseapp.com',
+        messagingSenderId: '550068546699',
+      })
+    ),
+    NgxExtendedPdfViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

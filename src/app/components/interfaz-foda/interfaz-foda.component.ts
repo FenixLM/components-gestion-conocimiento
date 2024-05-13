@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { TableFodaComponent } from '../table-foda/table-foda.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-interfaz-foda',
@@ -7,6 +8,9 @@ import { TableFodaComponent } from '../table-foda/table-foda.component';
   styleUrls: ['./interfaz-foda.component.scss'],
 })
 export class InterfazFodaComponent {
+  pdfSrc =
+    'https://saacssigmatest.blob.core.windows.net/report-balance-statement/EECC_6_20240508.pdf?sv=2021-10-04&st=2024-05-09T01%3A40%3A40Z&se=2024-05-09T01%3A45%3A40Z&sr=b&sp=r&sig=aXsLC9OXrkqopf8cmxLUCqbodWIuNPFCGuGmNfugwvI%3D';
+  pdfSrcSanitazer;
   @ViewChild(TableFodaComponent) childComponent!: TableFodaComponent;
   title: string = 'Análisis FODA';
   oportunidades: string[] = [];
@@ -46,7 +50,11 @@ export class InterfazFodaComponent {
 
   estrategias: any[] = [];
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private sanitizer: DomSanitizer) {
+    this.pdfSrcSanitazer = this.sanitizer.bypassSecurityTrustResourceUrl(
+      this.pdfSrc
+    );
+  }
 
   getEstrategiasOfensivas() {
     this.childComponent.formatearIndices();
